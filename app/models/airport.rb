@@ -1,4 +1,4 @@
 class Airport < ApplicationRecord
-  has_many :departures, foreign_key: "departure_airport_id", class_name: "Flight"
-  has_many :arrivals, foreign_key: "arrival_airport_id", class_name: "Flight"
+  has_many :departures, inverse_of: "departing_airport"
+  has_many :arrivals, inverse_of: "arriving_airport"
 end
