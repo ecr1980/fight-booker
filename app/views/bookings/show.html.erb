@@ -1,0 +1,11 @@
+Booking created for Flight <%= @booking.flight_id %>.<br><br>
+Departing Airport: <%= @booking.flight.departing_airport.airport_code %>, <%= @booking.flight.departing_airport.airport_name%>.<br><br>
+Arrival Airport: <%= @booking.flight.arriving_airport.airport_code %>, <%= @booking.flight.arriving_airport.airport_name%>.<br><br>
+Departure: <%= @booking.flight.departure %>.<br><br>
+Flight Length: <%= @booking.flight.flight_length %> hour(s).<br><br>
+Passengers:
+<ul>
+<% @booking.passengers.each do |passenger| %>
+  <li><%= passenger.passenger_name %>, <%= passenger.passenger_email %></li>
+<% end %>
+</ul>

@@ -2,3 +2,15 @@ Book your ticket now for Flight <%= @flight.id %>.<br><br>
 
 Departure: <%= @flight.departing_airport.airport_name %> at <%= @flight.departure %>.<br><br>
 After a <%= @flight.flight_length %> hour flight, you will arrive at <%= @flight.arriving_airport.airport_name%>.
+
+
+<%= form_with model: @booking do |f| %>
+  <%= f.hidden_field :flight_id, :value => @flight.id %>  
+  <%= f.fields_for :passengers do |passenger_form|%>
+    <%= passenger_form.label "Passenger's name:"%>
+    <%= passenger_form.text_field :passenger_name %><br>
+    <%= passenger_form.label "Passenger's email:"%>
+    <%= passenger_form.text_field :passenger_email %><br><br>
+  <% end %>
+  <%= f.submit "Book Flight!"%>
+<% end %>
