@@ -19,8 +19,12 @@ Welcome to the flight booker.
 <br>
 <br>
 <% @flights.each do |flight| %>
-  Flight from <%= flight.departing_airport.airport_code %> to <%= flight.arriving_airport.airport_code%> on <%= flight.departure.to_date %>, with <%= flight.passenger_capacity%> available seats.
+  Flight from <%= flight.departing_airport.airport_code %> to <%= flight.arriving_airport.airport_code%> on <%= flight.departure.to_date %>.
   <br>
   Leaves from <%= flight.departing_airport.airport_name %> at <%= flight.departure.to_fs(:long_ordinal) %>, and arrives at <%= flight.arriving_airport.airport_name %> <%= flight.flight_length%> hours later.
-  <br><br><br>
+  <br>
+  <%= form_with model: @booking do |f| %>
+    <%#= f.hidden_field :passengers, :value => %>
+    <%= f.submit "Book Flight" %>
+  <% end %>
 <% end %>

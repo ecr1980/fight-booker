@@ -24,16 +24,15 @@ Flight.delete_all
 
 10.times do |dep_i|
   depart = dep_i + 1
-  1000.times do
+  500.times do
     arrival = 0
     until ((arrival != depart) && (arrival != 0)) do 
       arrival = rand(1..10)
     end
-    passenger_capacity_gen = rand(1..4)
     this_flight_length = rand(1..12)
     flight_start = DateTime.new(2022,5,(5+(rand(1..10))),(rand(0...24)), rand(0...60))
     flight_date = flight_start.to_date
-    Flight.create(departure_airport_id: depart, arrival_airport_id: arrival, passenger_capacity: passenger_capacity_gen, departure: flight_start, flight_length: this_flight_length, flight_date: flight_date)
+    Flight.create(departure_airport_id: depart, arrival_airport_id: arrival,  departure: flight_start, flight_length: this_flight_length, flight_date: flight_date)
   end
 end
 
