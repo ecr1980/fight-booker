@@ -5,7 +5,7 @@ Welcome to the flight booker.
   Departing Airport: <%= select_tag(:departure_airport_id, options_for_select(@airport_options)) %> <br>
   Arriving Airport:   <%= select_tag(:arrival_airport_id, options_for_select(@airport_options)) %> <br>
   Number of Passengers: 
-  <select name="passenger_capacity">
+  <select name="passengers">
     <% 4.times do |i| %>
       <option value = "<%=i + 1%>" ><%=i + 1%></option>
     <% end %>
@@ -23,8 +23,9 @@ Welcome to the flight booker.
   <br>
   Leaves from <%= flight.departing_airport.airport_name %> at <%= flight.departure.to_fs(:long_ordinal) %>, and arrives at <%= flight.arriving_airport.airport_name %> <%= flight.flight_length%> hours later.
   <br>
-  <%= form_with model: @booking do |f| %>
-    <%#= f.hidden_field :passengers, :value => %>
+  <%= form_with model: @booking, url: new_booking_path, method: :get do |f| %>
+    <%= f.hidden_field :passengers, :value => params[:passengers] %>
+    <%= f.hidden_field :flight, :value => flight.id %>
     <%= f.submit "Book Flight" %>
   <% end %>
 <% end %>

@@ -1,0 +1,4 @@
+Book your ticket now for Flight <%= @flight.id %>.<br><br>
+
+Departure: <%= @flight.departing_airport.airport_name %> at <%= @flight.departure %>.<br><br>
+After a <%= @flight.flight_length %> hour flight, you will arrive at <%= @flight.arriving_airport.airport_name%>.

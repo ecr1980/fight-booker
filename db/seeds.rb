@@ -22,8 +22,8 @@ Flight.delete_all
 #Airport.create(airport_code: "SEA", airport_name: "Seattle/Tacoma International Airport")
 
 
-10.times do |dep_i|
-  depart = dep_i + 1
+10.times do |departure_index|
+  depart = departure_index + 1
   500.times do
     arrival = 0
     until ((arrival != depart) && (arrival != 0)) do 
