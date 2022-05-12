@@ -30,7 +30,7 @@ Flight.delete_all
       arrival = rand(1..10)
     end
     this_flight_length = rand(1..12)
-    flight_start = DateTime.new(2022,5,(5+(rand(1..10))),(rand(0...24)), rand(0...60))
+    flight_start = DateTime.new(2022,5,(11+(rand(1..10))),(rand(0...24)), rand(0...60))
     flight_date = flight_start.to_date
     Flight.create(departure_airport_id: depart, arrival_airport_id: arrival,  departure: flight_start, flight_length: this_flight_length, flight_date: flight_date)
   end
